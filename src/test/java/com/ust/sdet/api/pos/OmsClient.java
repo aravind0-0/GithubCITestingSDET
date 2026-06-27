@@ -30,7 +30,6 @@ final class OmsClient {
                         .when()
                         .get("/orders/" + id);
 
-
         return new Order(
 
                 response.statusCode(),

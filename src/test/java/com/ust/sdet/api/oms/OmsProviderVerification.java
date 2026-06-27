@@ -29,7 +29,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 //        authentication = @PactBrokerAuth(token = "lKudSrGBS_jlJUD3mRpYLg")
 //
 //)
-@PactFolder("target/pacts")
+//@PactFolder("target/pacts")
 public class OmsProviderVerification {
     @RegisterExtension
     private static final WireMockExtension wireMock =
