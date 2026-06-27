@@ -35,7 +35,7 @@ final class OmsClient {
 
                 response.statusCode(),
 
-                ((Number) response.path("id")).intValue(),
+                ((Number) response.path("orderId")).intValue(),
 
                 response.path("status"),
 

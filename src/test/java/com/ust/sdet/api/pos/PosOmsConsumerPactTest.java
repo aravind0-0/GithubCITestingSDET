@@ -40,7 +40,7 @@ class PosOmsConsumerPactTest {
                         "application/json"
                 )
                 .body(new PactDslJsonBody()
-                        .integerType("id", 123)
+                        .integerType("orderId", 123)
                         .stringType("status", "CONFIRMED")
                         .numberType("total", 42.0)
                 )
