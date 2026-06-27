@@ -88,7 +88,7 @@ class PosOmsConsumerPactTest {
                                 .integerType("statusCode", 201)
                                 .integerType("orderId", 101)
                                 .stringType("status", "CREATED")
-                                .integerType("total", 2000)
+                                .numberType("total", 2000)
 
                 )
 

@@ -84,7 +84,7 @@ public class OmsProviderVerification {
 
     @State("SKU-9 has Stock")
     void getInventory() {
-        wireMock.stubFor(get(urlEqualTo("/inventory/SKU-9"))
+        wireMock.stubFor(get(urlEqualTo("/Inventory/SKU-9"))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")
