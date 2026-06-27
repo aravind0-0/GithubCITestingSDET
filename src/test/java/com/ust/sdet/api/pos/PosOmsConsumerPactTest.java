@@ -184,14 +184,13 @@ class PosOmsConsumerPactTest {
                 new OmsClient(mockServer.getUrl());
 
 
-        OmsClient.Order inventory =
+        OmsClient.Inventory inventory =
                 client.getInventory(7);
 
 
         assertEquals(200, inventory.statuscode());
-        assertEquals(7, inventory.orderId());
-        assertEquals("Confirmed", inventory.status());
-        assertEquals(42.0, inventory.total());
+        assertEquals("SKU-9", inventory.sku());
+        assertEquals(5, inventory.quantity());
 
     }
 
