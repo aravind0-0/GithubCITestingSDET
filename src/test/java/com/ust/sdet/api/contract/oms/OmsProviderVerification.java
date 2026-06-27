@@ -12,7 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 
 @Provider("oms-provider")
-@PactBroker(url = "http://localhost:9292")
+@PactBroker(url = "http://127.0.0.1:9292")
 public class OmsProviderVerification {
 
 
