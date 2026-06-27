@@ -42,7 +42,7 @@ class PosOmsConsumerPactTest {
                 .body(new PactDslJsonBody()
                         .integerType("id", 123)
                         .stringType("status", "CONFIRMED")
-                        .numberType("total", 12.0)
+                        .numberType("total", 42.0)
                 )
 
                 .toPact(V4Pact.class);
@@ -83,9 +83,13 @@ class PosOmsConsumerPactTest {
                         "application/json"
                 )
 
-                .body(new PactDslJsonBody()
-                        .stringType("sku", "SKU-9")
-                        .integerType("quantity", 20)
+                .body(
+                        new PactDslJsonBody()
+                                .integerType("statusCode", 201)
+                                .integerType("orderId", 101)
+                                .stringType("status", "CREATED")
+                                .integerType("total", 2000)
+
                 )
 
                 .toPact(V4Pact.class);
