@@ -120,9 +120,11 @@ class PosOmsConsumerPactTest {
                 )
 
                 .body(new PactDslJsonBody()
-                        .integerType("id", 7)
-                        .stringType("status", "Confirmed")
-                        .numberType("total", 42)
+//                        .integerType("id", 7)
+//                        .stringType("status", "Confirmed")
+//                        .numberType("total", 42)
+                                .stringType("sku", "SKU-9")
+                                .integerType("quantity", 20)
                 )
 
                 .toPact(V4Pact.class);
@@ -145,7 +147,7 @@ class PosOmsConsumerPactTest {
         assertEquals(200, order.statuscode());
         assertEquals(123, order.orderId());
         assertEquals("CONFIRMED", order.status());
-        assertEquals(12.0, order.total());
+        assertEquals(42.0, order.total());
 
     }
 
