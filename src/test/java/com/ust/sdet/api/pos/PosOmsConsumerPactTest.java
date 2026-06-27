@@ -60,7 +60,7 @@ class PosOmsConsumerPactTest {
                 .given("Creating a new order")
 
                 .uponReceiving("a request for creating an Order")
-                .path("/orders/123")
+                .path("/orders/")
                 .method("POST")
 
                 .matchHeader(
@@ -103,7 +103,7 @@ class PosOmsConsumerPactTest {
                 .given("SKU-9 has Stock")
 
                 .uponReceiving("a request for Sku-9")
-                .path("/Inventory/7")
+                .path("/Inventory/SKU-9")
                 .method("GET")
 
                 .willRespondWith()
