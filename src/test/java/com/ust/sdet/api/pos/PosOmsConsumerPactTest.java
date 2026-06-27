@@ -119,13 +119,21 @@ class PosOmsConsumerPactTest {
                         "application/json"
                 )
 
-                .body(new PactDslJsonBody()
+//                .body(new PactDslJsonBody()
 //                        .integerType("id", 7)
 //                        .stringType("status", "Confirmed")
 //                        .numberType("total", 42)
+//                                .stringType("sku", "SKU-9")
+//                                .integerType("quantity", 20)
+//                )
+
+                .body(
+                        new PactDslJsonBody()
+                                .integerType("statusCode", 201)
                                 .stringType("sku", "SKU-9")
                                 .integerType("quantity", 20)
                 )
+
 
                 .toPact(V4Pact.class);
     }
@@ -161,16 +169,17 @@ class PosOmsConsumerPactTest {
                 new OmsClient(mockServer.getUrl());
 
 
-        OmsClient.CreateOrder order =
+        OmsClient.Order order =
                 client.createOrder(
+
                         "SKU-9",
                         20
                 );
 
 
         assertEquals(201, order.statuscode());
-        assertEquals("SKU-9", order.sku());
-        assertEquals(20, order.quantity());
+        assertEquals("CREATED", order.status());
+        assertEquals(2000.0, order.total());
 
     }
 
@@ -190,7 +199,7 @@ class PosOmsConsumerPactTest {
 
         assertEquals(200, inventory.statuscode());
         assertEquals("SKU-9", inventory.sku());
-        assertEquals(5, inventory.quantity());
+        assertEquals(20, inventory.quantity());
 
     }
 

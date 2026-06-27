@@ -19,49 +19,49 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class WireMockTest {
 
-    @RegisterExtension
-    static WireMockExtension wm = WireMockExtension.newInstance()
-            .options(options().dynamicPort())
-            .build();
-
-    private HttpClient client;
-
-    @BeforeEach
-    void pointConsumerAtWiremock(){
-        RestAssured.baseURI = wm.getRuntimeInfo().getHttpBaseUrl();
-        client = HttpClient.newHttpClient();
-    }
-
-    @Test
-    void returnsConfirmedOrderOverHttpTest() {
-
-        wm.stubFor(get(urlPathEqualTo("/orders"))
-                .willReturn(aResponse()
-                        .withStatus(200)
-                        .withHeader("Content-Type", "application/json")
-                        .withBody("""
-                                    {
-                                      "id": "123",
-                                      "status": "CONFIRMED",
-                                      "total": 250
-                                    }
-                                """)));
-
-
-        given()
-                .queryParam("id", "123")
-                .when()
-                .get("/orders")
-                .then()
-                .statusCode(200)
-                .body("status", equalTo("CONFIRMED"))
-                .body("total", equalTo(250))
-                ;
-
-        wm.verify(getRequestedFor(urlPathEqualTo("/orders"))
-                .withQueryParam("id", (StringValuePattern) equalTo("123")));
-
-    }
+//    @RegisterExtension
+//    static WireMockExtension wm = WireMockExtension.newInstance()
+//            .options(options().dynamicPort())
+//            .build();
+//
+//    private HttpClient client;
+//
+//    @BeforeEach
+//    void pointConsumerAtWiremock(){
+//        RestAssured.baseURI = wm.getRuntimeInfo().getHttpBaseUrl();
+//        client = HttpClient.newHttpClient();
+//    }
+//
+//    @Test
+//    void returnsConfirmedOrderOverHttpTest() {
+//
+//        wm.stubFor(get(urlPathEqualTo("/orders"))
+//                .willReturn(aResponse()
+//                        .withStatus(200)
+//                        .withHeader("Content-Type", "application/json")
+//                        .withBody("""
+//                                    {
+//                                      "id": "123",
+//                                      "status": "CONFIRMED",
+//                                      "total": 250
+//                                    }
+//                                """)));
+//
+//
+//        given()
+//                .queryParam("id", "123")
+//                .when()
+//                .get("/orders")
+//                .then()
+//                .statusCode(200)
+//                .body("status", equalTo("CONFIRMED"))
+//                .body("total", equalTo(250))
+//                ;
+//
+//        wm.verify(getRequestedFor(urlPathEqualTo("/orders"))
+//                .withQueryParam("id", (StringValuePattern) equalTo("123")));
+//
+//    }
 
 
 

@@ -48,7 +48,7 @@ final class OmsClient {
 
 
 
-    CreateOrder createOrder(
+    Order createOrder(
             String sku,
             int quantity
     ){
@@ -78,15 +78,15 @@ final class OmsClient {
 
 
 
-        return new CreateOrder(
 
+        return new Order(
                 response.statusCode(),
-
-                response.path("sku"),
-
-                response.path("quantity")
+                response.path("orderId"),
+                response.path("status"),
+                response.jsonPath().getDouble("total")
 
         );
+
 
     }
 

@@ -78,7 +78,7 @@ public class OmsProviderVerification {
                         .withStatus(201)
                         .withHeader("Content-Type", "application/json")
                         .withBody("""
-                    {"statusCode": 201, "orderId": 101, "status": "CREATED", "total": 2000}
+                    {"statusCode": 201, "orderId": 101, "status": "CREATED", "total": 2000.0}
                 """)));
     }
 
@@ -89,7 +89,11 @@ public class OmsProviderVerification {
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")
                         .withBody("""
-                    {"sku": "SKU-9", "qty": 5}
+                                    {
+                                      "statusCode": 201,
+                                      "sku": "SKU-9",
+                                      "quantity": 20
+                                    }
                 """)));
     }
 }
