@@ -74,7 +74,7 @@ final class OmsClient {
                         .body(jsonBody)
 
                         .when()
-                        .post("/orders/123");
+                        .post("/orders/");
 
 
 
@@ -93,7 +93,7 @@ final class OmsClient {
 
 
 
-    Order getInventory(int id){
+    Inventory getInventory(int id){
 
 
         Response response =
@@ -103,20 +103,27 @@ final class OmsClient {
 
                         .when()
 
-                        .get("/Inventory/" + id);
+                        .get("/Inventory/SKU-9");
 
 
-        return new Order(
+//        return new Order(
+//
+//                response.statusCode(),
+//
+//                ((Number) response.path("orderId")).intValue(),
+//
+//                response.path("status"),
+//
+//                ((Number) response.path("total")).doubleValue()
+//
+//        );
 
+        return new Inventory(
                 response.statusCode(),
-
-                ((Number) response.path("id")).intValue(),
-
-                response.path("status"),
-
-                ((Number) response.path("total")).doubleValue()
-
+                response.path("sku"),
+                ((Number) response.path("quantity")).intValue()
         );
+
 
     }
 
@@ -137,6 +144,14 @@ final class OmsClient {
             String sku,
             int quantity
     ){}
+
+
+    record Inventory(
+            int statuscode,
+            String sku,
+            int quantity
+    ){}
+
 
 
 }
