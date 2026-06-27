@@ -57,7 +57,7 @@ class PosOmsConsumerPactTest {
 
         return builder
 
-                .given("Order created for inventory")
+                .given("Creating a new order")
 
                 .uponReceiving("a request for creating an Order")
                 .path("/orders/123")
@@ -100,7 +100,7 @@ class PosOmsConsumerPactTest {
 
         return builder
 
-                .given("Sku-9 has stock")
+                .given("SKU-9 has Stock")
 
                 .uponReceiving("a request for Sku-9")
                 .path("/Inventory/7")
